@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MyHashMap {
@@ -19,7 +19,7 @@ public class MyHashMap {
 	
 	public MyHashMap(){
 		
-		this.recordList=new ArrayList<Container>();
+		this.recordList=new LinkedList<Container>();
 	}
 	
 	public void put(Object k, Object v){
