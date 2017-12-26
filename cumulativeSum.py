@@ -1,0 +1,10 @@
+import pandas as pd
+df=pd.read_csv('stock_input.csv')
+print('*****INPUT*****')
+print(df)
+print('*****OUTPUT*****')
+#print(df.groupby(by=['product','date']).sum().groupby(level=[0]).cumsum())
+df['stock'] = df.groupby(['product'])['delta'].apply(lambda x: x.cumsum())
+print(df)
+#dd = df.groupby(by=['product','date']).sum().groupby(level=[0]).cumsum()
+df.to_csv('test_stock.csv', sep='\t')
