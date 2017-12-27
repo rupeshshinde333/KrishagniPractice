@@ -14,7 +14,7 @@ with open("stock_input.csv") as f:
         except ValueError:
             continue
         d[product] += delta
-j = json.dump(d, open('temp.json', 'w'))
+json.dump(d, open('temp.json', 'w'))
 print(dict(d))
 
 df = pd.read_json('temp.json',typ='series')
