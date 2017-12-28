@@ -3,20 +3,26 @@ package com.krishagni.csvsum;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import com.csvreader.CsvWriter;
+
 import au.com.bytecode.opencsv.CSVReader;
+
+
+
 
 public class Sum {
 	
 	public static void main(String[] args) throws IOException
 	{
-	        Map<String , Integer> m = new LinkedHashMap<String , Integer>();
+		 Map<String , Integer> m = new LinkedHashMap<String , Integer>();
 		try {
-	        String csvFile = "/home/krishagni/Desktop/python/stock.csv";
+	        String csvFile = "/home/krishagni/Desktop/python/stock_input.csv";
 	        @SuppressWarnings("resource")
-		CSVReader csvReader = new CSVReader(new FileReader(csvFile), ',');
+	        CSVReader csvReader = new CSVReader(new FileReader(csvFile), ',');
 	        String[] col;
 	    
 	        
@@ -41,19 +47,17 @@ public class Sum {
 		catch (IOException ex) { ex.printStackTrace();}
 
 		System.out.println(m);
+		try {
+		String csv = "/home/krishagni/Desktop/python/test.csv";
+		CsvWriter csvOutput = new CsvWriter(new FileWriter(csv, false), ',');
+		for (Map.Entry<String, Integer> entry : m.entrySet()) {
+			
+			csvOutput.write(entry.getKey());
+			csvOutput.write(entry.getValue().toString());
+			csvOutput.endRecord();
+			
+		  }csvOutput.close();}
 		
-		String eol = System.getProperty("line.separator");
-
-		try (Writer writer = new FileWriter("/home/krishagni/Desktop/python/test.csv")) {
-		  for (Map.Entry<String, Integer> entry : m.entrySet()) {
-		    writer.append(entry.getKey())
-		          .append(',')
-		          .append(entry.getValue().toString());
-		          //.append(eol);
-		  }
-		} catch (IOException ex) {
-		  ex.printStackTrace(System.err);
-		}
-		
+		catch(Exception e) {}		
 	}	
 }
