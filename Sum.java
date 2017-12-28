@@ -3,16 +3,10 @@ package com.krishagni.csvsum;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import com.csvreader.CsvWriter;
-
 import au.com.bytecode.opencsv.CSVReader;
-
-
-
 
 public class Sum {
 	
